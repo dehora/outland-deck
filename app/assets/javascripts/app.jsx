@@ -1,27 +1,44 @@
 import React from "react";
 import {render} from "react-dom";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import "../styles/style.scss";
-import RaisedButton from 'material-ui/RaisedButton';
-import AppBar from 'material-ui/AppBar';
-
-const NavBar = () => (
-    <AppBar title="Outland" />
-);
+import {Link, Router, Route, hashHistory} from "react-router";
 
 export const App = React.createClass({
-
   render: function () {
     return (
-        <MuiThemeProvider>
-          <NavBar/>
-        </MuiThemeProvider>
+        <div>
+          <h3>Outland</h3>
+          <ul role="nav">
+            <li><Link to="/apps" activeStyle={{color: 'blue'}}>Apps</Link></li>
+            <li><Link to="/features" activeStyle={{color: 'blue'}}>Features</Link></li>
+          </ul>
+
+          {this.props.children}
+
+        </div>
     );
   },
 });
 
-render(
+export const Apps = React.createClass({
+  render() {
+    return <div>Apps</div>
+  }
+});
 
-      <App/>
-    , document.getElementById("app")
-);
+export const Features = React.createClass({
+  render() {
+    return <div>Features</div>
+  }
+});
+
+render((
+    <div>
+      <Router history={hashHistory}>
+        <Route path="/" component={App}>
+          <Route path="/apps" component={Apps}/>
+          <Route path="/features" component={Features}/>
+        </Route>
+      </Router>
+    </div>
+), document.getElementById('app'));
