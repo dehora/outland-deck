@@ -1,15 +1,35 @@
 # Ignore Play! working directory #
 bin/
 /db
-.eclipse
 /lib/
 /logs/
 /modules
-/project/target
-/target
+target
 tmp/
 test-result
 server.pid
 *.eml
 /dist/
 .cache
+logs
+
+# IDE files
+.idea
+.idea_modules
+
+# OS files
+*.swp
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Node Files #
+npm-debug.log
+node_modules/
+
+# Build files
+.happypack/
+build/
+dist/
+transpiled/
