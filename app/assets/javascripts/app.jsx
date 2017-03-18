@@ -1,18 +1,27 @@
 import React from "react";
 import {render} from "react-dom";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import "../styles/style.scss";
+import RaisedButton from 'material-ui/RaisedButton';
+import AppBar from 'material-ui/AppBar';
+
+const NavBar = () => (
+    <AppBar title="Outland" />
+);
 
 export const App = React.createClass({
 
   render: function () {
     return (
-        <h2>Hello From React!</h2>
+        <MuiThemeProvider>
+          <NavBar/>
+        </MuiThemeProvider>
     );
   },
 });
 
-render((
-    <div className="container">
+render(
+
       <App/>
-    </div>
-), document.getElementById("app"));
+    , document.getElementById("app")
+);
